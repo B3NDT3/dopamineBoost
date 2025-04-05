@@ -10,9 +10,10 @@
   
 
   <body >
-  <div class="content">
- Dies ist ein Text
-  </div>
+<div class="container">
+  <div id='dopaminBoost' class="message"></div>
+</div>
+
   </body>
 
 <style>
@@ -23,4 +24,48 @@
 
   .content {
     font-family: "Garamond", sans-serif; }
+
+  :root {
+  --gradient: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.container {
+  height: 1080px;
+  width: 1920px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  padding: 24px;
+  border: 14px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source:  var(--gradient);
+  font-size: 24px;
+  color: white;
+}
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+getSentence();
+  
+}, false);
+
+var messages = ["Du wirst geliebt.", "Du bist ein guter Mensch.", "Du hast alles Gute verdient."];
+
+function getSentence() {
+        var sentence = Math.round(Math.random() * (2 - 0)) + 0;
+        var words = messages[sentence]
+        speak(words);
+}
+
+
+function speak (words) {
+   
+    const bubble = document.getElementById('dopaminBoost');
+    bubble.innerHTML = words;
+}
+</script>
